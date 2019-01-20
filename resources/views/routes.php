@@ -32,7 +32,7 @@
                         <a class="nav-link" href="/Home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/routes">Bus Routes</a>
+                        <a class="nav-link" href="/rutas">Bus Routes</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Editor

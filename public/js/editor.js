@@ -25,40 +25,36 @@ var addRoute = () => {
     }else if(map.entities.getLength() == 0){
         alert('Please trace a route before creating a route');
     }else{
-
         // Check if route name exists
-        // fetch('api/ruta?name='+routeName).then(function(response) {
-        //     return response.json();
-        // }).then(function(data) {
-        //     console.log(data);
-        // });
-
-
-        fetch('api/route', {
-            method: 'post',
-            headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
-            body: JSON.stringify({name: routeName, color: routeColor})
-        }).then(function(response) {
+        fetch('api/getRoute?name='+routeName).then(function(response) {
             return response.json();
-        }).then(function(data) {
-            let coordinates = [];
-            for(let i = 0; i < map.entities.getLength(); i++){
-                coordinates[i] = [map.entities.get(i).getLocation().latitude, map.entities.get(i).getLocation().longitude];
+        }).then(function(routes) {
+            if(routes.length > 0){
+                alert('Name ' + routeName + ' is already in use. Please try another name.');
+            }else{
+                fetch('api/route', {
+                    method: 'post',
+                    headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
+                    body: JSON.stringify({name: routeName, color: routeColor})
+                }).then(function(response) {
+                    return response.json();
+                }).then(function(data) {
+                    for(let i = 0; i < map.entities.getLength(); i++){
+                        fetch('api/point', {
+                            method: 'post',
+                            headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
+                            body: JSON.stringify({ routeId: data.id, routeName: routeName, lat: map.entities.get(i).getLocation().latitude, lng: map.entities.get(i).getLocation().longitude, color: routeColor })
+                        }).then(function(response) {
+                            return response.json();
+                        }).then(function(status) {
+                            
+                        });
+                    }
+                    alert('Route ' + routeName + ' was successfully created!');
+                    $('#route-name').val('');
+                    $('#route-color').val('');
+                });
             }
-
-            // fetch('api/point', {
-            //     method: 'post',
-            //     headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
-            //     body: JSON.stringify({name: $('#route-name').val(), color: $('#route-color').val(), rutaid: data.id, })
-            // }).then(function(response) {
-            //     return response.json();
-            // }).then(function(data) {
-            //     let coordinates = [];
-            //     for(let i = 0; i < map.entities.getLength(); i++){
-            //         coordinates[i] = [map.entities.get(i).getLocation().latitude, map.entities.get(i).getLocation().longitude];
-            //     }
-            // });
-
         });
     }   
 };
