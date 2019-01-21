@@ -17,4 +17,8 @@ class RouteController extends Controller{
         $route = Route::where('name', '=', $name)->get();
         return $route;
     }
+
+    public function getAll(Request $request){
+        return response()->json(Route::orderBy('name', 'asc')->get());
+    }
 }

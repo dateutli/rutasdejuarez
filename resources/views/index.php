@@ -29,18 +29,15 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Inicio
+                        <a class="nav-link" href="#">Home
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Rutas</a>
+                        <a class="nav-link" href="/routes">Bus Routes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="/editor">Editor</a>
                     </li>
                 </ul>
             </div>
@@ -50,21 +47,19 @@
     <!-- Page Content -->
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-4">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-12">
 
                 <div class="card mt-2">
+                    <div class="card-header bg-info text-white">
+                        Directions
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">Direcciones</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            <hr />
-                        </h6>
-
                         <!-- Origen Input -->
                         <div class="form-row">
-                            <div class="col-lg-10 col-md-10">
-                                <input type="text" class="form-control" placeholder="Origen" id="from" />
+                            <div class="col-lg-10 col-md-9 col-sm-9 col-9">
+                                <input type="text" class="form-control" placeholder="From" id="from" />
                             </div>
-                            <div class="col-lg-2 col-md-2">
+                            <div class="col-lg-2 col-md-3 col-sm-3 col-3">
                                 <button class="btn btn-danger btn-block" onClick="placeMarker('from')">
                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                                 </button>
@@ -73,22 +68,23 @@
 
                         <!-- Destino Input -->
                         <div class="form-row mt-1">
-                            <div class="col-lg-10 col-md-10">
-                                <input type="text" class="form-control" placeholder="Destino" id="to" />
+                            <div class="col-lg-10 col-md-9 col-sm-9 col-9">
+                                <input type="text" class="form-control" placeholder="To" id="to" />
                             </div>
-                            <div class="col-lg-2 col-md-2">
+                            <div class="col-lg-2 col-md-3 col-sm-3 col-3">
                                 <button class="btn btn-success btn-block" onClick="placeMarker('to')">
                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>
 
-                        <button class="btn btn-warning btn-block mt-1" onClick='placeMarker()' id="cancelarPlaceMarker" style="display:none;">
-                            Cancelar
+                        <button class="btn btn-warning btn-block mt-1" onClick='placeMarker()' id="cancelarPlaceMarker"
+                            style="display:none;">
+                            Cancel
                         </button>
 
                         <button class="btn btn-primary btn-block mt-1" id="go">
-                            Encontrar Ruta
+                            Find Route
                         </button>
 
                     </div>
@@ -97,15 +93,11 @@
             </div>
 
             <div class="col-lg-8 col-md-8">
-
                 <div class="card mt-2">
-                    <div class="card-body">
-                        <h5 class="card-title">Mapa</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            <hr />
-                        </h6>
-                        <div id='map' style='height: 500px;'></div>
+                    <div class="card-header bg-info text-white">
+                        Map
                     </div>
+                    <div id='map' style='height: 500px;'></div>
                 </div>
             </div>
 
@@ -116,7 +108,8 @@
     <script src="js/jquery/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script type='text/javascript' src="js/app.js"></script>
-    <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AgShPFrla4jXncqYsgzWXbnCFjs2ETVAxIEmuH9iWa6E4W4-vYMCUsGUgI8NlJ66&callback=loadMapScenario' async defer></script>
+    <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AgShPFrla4jXncqYsgzWXbnCFjs2ETVAxIEmuH9iWa6E4W4-vYMCUsGUgI8NlJ66&callback=loadMapScenario'
+        async defer></script>
 
 </body>
 

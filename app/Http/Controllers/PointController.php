@@ -12,4 +12,10 @@ class PointController extends Controller{
         return response()->json($point, 201);
     }
 
+    public function getPoints(Request $request){
+        $routeId = $request->all()['id'];
+        $points = Point::where('routeId', '=', $routeId)->get();
+        return $points;
+    }
+    
 }

@@ -11,8 +11,8 @@ class CreatePointsTable extends Migration{
             $table->increments('id');
             $table->string('routeId');
             $table->string('routeName');
-            $table->string('lat');
-            $table->string('lng');
+            $table->float('lat', 10, 6);
+            $table->float('lng', 10, 6);
             $table->string('color');
         });
     }
