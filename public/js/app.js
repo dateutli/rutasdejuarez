@@ -36,12 +36,24 @@ var removePreviousPin = (id) => {
 var placeMarker = (id) => {
     if(id == 'from'){
         placeMarkerStatus = 1;
+        $('#from').val('Place "from" marker on the map');
+        $('#from').attr('disabled', true);
+        $('#to').val('Place "to" marker on the map');
+        $('#to').attr('disabled', true);
         $('#cancelarPlaceMarker').show();
     }else if(id == 'to'){
         placeMarkerStatus = 2;
+        $('#from').val('Place "from" marker on the map');
+        $('#from').attr('disabled', true);
+        $('#to').val('Place "to" marker on the map');
+        $('#to').attr('disabled', true);
         $('#cancelarPlaceMarker').show();
     }else{
         placeMarkerStatus = 0;
+        $('#to').val('');
+        $('#to').attr('disabled', false);
+        $('#from').val('');
+        $('#from').attr('disabled', false);
         $('#cancelarPlaceMarker').hide();
         map.entities.clear();
     }
